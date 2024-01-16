@@ -4,7 +4,7 @@ node {
     }
     
     stage('Build image') {
-       dockerImage = docker.build("BhargavHarshithMudragiri/react-app:v1")
+       dockerImage = docker.build("bhargavharshith/react-app:v1")
     }
     
     stage('Push image') {
@@ -18,7 +18,7 @@ node {
     }
         
     stage('Run the container Locally on the Jenkins server') {
-        sh "docker run -itd --name bhargav-app -p 80:80 BhargavHarshithMudragiri/react-app:v1"
+        sh "docker run -itd --name bhargav-app -p 80:80 bhargavharshith/react-app:v1"
      
     }
   }
