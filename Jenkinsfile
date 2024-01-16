@@ -8,7 +8,7 @@ node {
     }
     
     stage('Push image') {
-       withDockerRegistry([ credentialsId: "docker", url: "https://hub.docker.com/repositories/bhargavharshith" ]) {
+       withDockerRegistry([ credentialsId: "docker", url: "" ]) {
        dockerImage.push()
         }
     }    
