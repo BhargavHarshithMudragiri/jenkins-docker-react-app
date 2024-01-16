@@ -1,14 +1,14 @@
 node {   
     stage('Clone Github repository') {
-        git credentialsId: 'github-creds', url: 'https://github.com/CloudWithRaghu/jenkins-docker-react-app.git'
+        git credentialsId: 'github', url: 'https://github.com/BhargavHarshithMudragiri/jenkins-docker-react-app.git'
     }
     
     stage('Build image') {
-       dockerImage = docker.build("cloudwithraghu/react-app:latest")
+       dockerImage = docker.build("BhargavHarshithMudragiri/react-app:v1")
     }
     
     stage('Push image') {
-       withDockerRegistry([ credentialsId: "dockerhub-creds", url: "" ]) {
+       withDockerRegistry([ credentialsId: "docker", url: "https://hub.docker.com/repositories/bhargavharshith" ]) {
        dockerImage.push()
         }
     }    
@@ -18,7 +18,7 @@ node {
     }
         
     stage('Run the container Locally on the Jenkins server') {
-        sh "docker run -itd --name react-app -p 80:80 cloudwithraghu/react-app:latest"
+        sh "docker run -itd --name bhargav-app -p 80:80 BhargavHarshithMudragiri/react-app:v1"
      
     }
   }
